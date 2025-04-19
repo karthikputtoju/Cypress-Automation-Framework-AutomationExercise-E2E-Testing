@@ -102,35 +102,6 @@ Cypress.Commands.add('addProductToCart', () => {
     });
 });
 
-Cypress.Commands.add('ViewProductCart', () => {
-    cy.fixture('user').then((user) => {
-        cy.visit('/');
-        cy.get('.shop-menu > .nav > :nth-child(2) > a').click();
-        cy.url().should('include', '/products');
-        cy.contains('Products').should('be.visible');
-        cy.get('.features_items .product-image-wrapper').eq(2).trigger('mouseover');
-        cy.wait(500); // Wait for hover effect to take place
-        cy.get('.features_items .product-image-wrapper .choose .nav').eq(2).click(); // Click on 'View Product'
-        cy.url().should('include', '/product_details');
-        cy.contains('Product Details').should('be.visible');
-        cy.get('.product-information').should('be.visible');
-        cy.get('.product-information .product-name').should('be.visible');
-        cy.get('.product-information .product-name').contains('Saree').should('be.visible');
-        cy.get('.product-information .product-price').should('be.visible');
-        cy.get('.product-information .product-price').contains('Rs. 5000').should('be.visible');
-        cy.get('.product-information .product-quantity').should('be.visible');
-        cy.get('.product-information .product-quantity').contains('Quantity').should('be.visible');
-        cy.get('.product-information .product-quantity').contains('In Stock').should('be.visible');
-        cy.get('.product-information .product-description').should('be.visible');
-        cy.get('.product-information .product-description').contains('This is a product description').should('be.visible');
-        cy.get('.product-information .product-add-to-cart').should('be.visible');
-        cy.get('.product-information .product-add-to-cart').contains('Add to cart').should('be.visible');
-        cy.get('.product-information .product-add-to-cart').click();
-        cy.url().should('include', '/cart');
-        cy.contains('Product added').should('be.visible');
-        });
-        });
-
 Cypress.Commands.add('viewcart', () => {
     cy.fixture('user').then((user) => {
         cy.visit('/');
@@ -138,6 +109,25 @@ Cypress.Commands.add('viewcart', () => {
         cy.url().should('include', '/view_cart');
         cy.contains('Cart').should('be.visible');
         }); 
+});
+
+Cypress.Commands.add('CartProductDetails', () => {
+    cy.fixture('user').then((user) => {
+        cy.visit('/');
+        cy.contains('Cart').click();
+        cy.url().should('include', '/view_cart');
+        cy.contains('Cart').should('be.visible');
+        //cy.get('.cart_quantity_delete').eq(0).click(); // Click on the delete button for the first product
+        //cy.wait(2000);
+        //cy.get('.cart_quantity_delete').eq(0).click(); // Second one replaced with the first one and delete it
+        cy.wait(2000);
+        cy.get('.cart_description').eq(0).should('have.length', 1); // Check if the first product is still there
+        cy.contains('Beautiful Peacock Blue Cotton Linen Saree').should('be.visible'); // Check if the product name is visible
+        cy.contains('Rs. 5000').should('be.visible'); // Check if the product price is visible
+
+        //Click on the Proceed to checkout button
+        cy.contains('Proceed To Checkout').click();
+    });
 });
 
 Cypress.Commands.add('deleteProduct', () => {
