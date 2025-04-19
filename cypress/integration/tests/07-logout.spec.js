@@ -5,11 +5,7 @@ describe('User Logout Test', () => {
     });
   
     it('should logout the user successfully', () => {
-      cy.contains('Logout').click();
-  
-      // Validate the user is redirected to login page
-      cy.url().should('include', '/login');
-      cy.contains('Signup / Login').should('be.visible');
+      cy.logout();
     });
   });
   

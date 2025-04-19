@@ -215,3 +215,12 @@ Cypress.Commands.add('logout', () => {
     cy.url().should('include', '/login');
     cy.contains('Signup / Login').should('be.visible');
 });
+
+Cypress.Commands.add('deleteAccount', () => {
+    cy.fixture('user').then((user) => {
+        cy.visit('/');
+        cy.contains('Delete Account').click();
+        cy.url().should('include', '/delete_account');
+        cy.contains('Account Deleted!').should('be.visible');
+    });
+});
