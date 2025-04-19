@@ -1,0 +1,24 @@
+{
+  "name": "project-cypress-automationexercise",
+  "version": "1.0.0",
+  "description": "Complete Cypress end-to-end UI test automation for AutomationExercise.com. Covers real-world flows like signup, login, cart, checkout, and more using reusable tests, fixtures, and custom commands. Ideal for QA Engineers and SDETs to learn, practice, or showcase Cypress skills.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karthikputtoju/project-cypress-automationexercise.git"
+  },
+  "keywords": [],
+  "author": "Karthik Puttoju",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/karthikputtoju/project-cypress-automationexercise/issues"
+  },
+  "homepage": "https://github.com/karthikputtoju/project-cypress-automationexercise#readme",
+  "devDependencies": {
+    "@faker-js/faker": "^9.7.0",
+    "cypress": "^14.3.1"
+  }
+}
