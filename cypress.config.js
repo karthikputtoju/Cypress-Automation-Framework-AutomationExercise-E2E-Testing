@@ -7,4 +7,13 @@ module.exports = defineConfig({
     fixturesFolder: 'cypress/fixtures',
     specPattern: 'cypress/integration/tests/*.spec.js'
   },
+  screenshotOnRunFailure: true,
+  env: {
+    allure: true,
+    allureResultsPath: 'allure-results',
+  },
+  reporter: 'cypress-allure-plugin',
+  reporterOptions: {
+    outputFolder: 'allure-results',
+  }
 });
