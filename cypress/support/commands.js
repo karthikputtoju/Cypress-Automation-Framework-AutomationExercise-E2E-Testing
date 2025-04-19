@@ -130,6 +130,38 @@ Cypress.Commands.add('CartProductDetails', () => {
     });
 });
 
+Cypress.Commands.add('PlaceOrder', () => {
+    cy.fixture('user').then((user) => {
+        cy.visit('/');
+        cy.contains('Review Your Order').should('be.visible');
+        cy.get('textarea[name="message"]').type('Please deliver in between 10:00 AM to 6:00 PM');
+        cy.contains('Place Order').click();
+    });
+});
+
+Cypress.Commands.add('payment', () => {
+    cy.fixture('user').then((user) => {
+        cy.visit('/');
+        cy.contains('Checkout').click();
+        cy.url().should('include', '/checkout');
+        cy.get('#billing-name').type(user.name);
+        cy.get('#billing-address').type(user.address);
+        cy.get('#billing-email').type(user.email);
+        cy.get('#billing-phone').type(user.phone);
+        cy.get('#billing-city').type(user.city);
+        cy.get('#billing-state').type(user.state);
+        cy.get('#billing-pincode').type(user.pincode);
+        cy.get('#billing-country').type(user.country);
+        cy.get('#billing-zip').type(user.zip);
+        cy.get('#billing-cardnumber').type(user.cardnumber);
+        cy.get('#billing-expiry').type(user.expiry);
+        cy.get('#billing-cvv').type(user.cvv);
+        cy.get('#billing-address').type(user.expiry);
+        cy.get('#billing-submit').click();
+    });
+});
+
+
 Cypress.Commands.add('deleteProduct', () => {
     cy.fixture('user').then((user) => {
         cy.visit('/');
@@ -141,7 +173,7 @@ Cypress.Commands.add('deleteProduct', () => {
     });
 });
 
-Cypress.Commands.add('checkout', () => {
+Cypress.Commands.add('payment', () => {
     cy.fixture('user').then((user) => {
         cy.visit('/');
         cy.contains('Checkout').click();
