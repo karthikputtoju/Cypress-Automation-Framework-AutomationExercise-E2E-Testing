@@ -12,9 +12,7 @@ describe('Checkout order the product', () => {
         
         // Click on 'Proceed To Checkout' button
         cy.PlaceOrder();
-
-        // Fill in the shipping details
-        
+ 
         });
     });
 });

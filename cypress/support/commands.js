@@ -207,6 +207,8 @@ Cypress.Commands.add('downloadInvoice', () => {
         cy.url().should('include', '/invoice.pdf');
         cy.get('#invoice-download').should('have.attr', 'download');
         cy.get('#invoice-download').should('have.attr', 'href').and('include', '/invoice.pdf');
+        cy.get('#invoice-download').should('be.visible');
+        cy.get('#invoice-download').should('have.text', 'Download Invoice');
     });
 });
 
