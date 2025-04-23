@@ -1,19 +1,22 @@
-const { defineConfig } = require("cypress");
+const { defineConfig } = require('cypress');
 
 module.exports = defineConfig({
   e2e: {
-    baseUrl: 'https://www.automationexercise.com',
-    supportFile: 'cypress/support/e2e.js',
-    fixturesFolder: 'cypress/fixtures',
-    specPattern: 'cypress/integration/tests/*.spec.js'
+    baseUrl: 'https://automationexercise.com',
+    specPattern: 'cypress/e2e/*.spec.js'
+    env: {
+      login_email: 'john@example.com',
+      login_password: 'pass123',
+    },
+    video: true,
+    screenshotOnRunFailure: true,
+    reporter: 'mochawesome',
+    reporterOptions: {
+      reportDir: 'cypress/reports',
+      overwrite: false,
+      html: true,
+      json: true,
+    },
   },
-  screenshotOnRunFailure: true,
-  env: {
-    allure: true,
-    allureResultsPath: 'allure-results',
-  },
-  reporter: 'cypress-allure-plugin',
-  reporterOptions: {
-    outputFolder: 'allure-results',
-  }
 });
+
