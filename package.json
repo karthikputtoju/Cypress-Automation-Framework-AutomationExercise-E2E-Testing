@@ -1,5 +1,5 @@
 {
-  "name": "project-cypress-automationexercise",
+  "name": "Cypress-Automation-Framework-AutomationExercise-E2E-Testing",
   "version": "1.0.0",
   "description": "Complete Cypress end-to-end UI test automation for AutomationExercise.com. Covers real-world flows like signup, login, cart, checkout, and more using reusable tests, fixtures, and custom commands. Ideal for QA Engineers and SDETs to learn, practice, or showcase Cypress skills.",
   "main": "index.js",
