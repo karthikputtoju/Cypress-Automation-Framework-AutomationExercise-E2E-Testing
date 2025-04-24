@@ -1,10 +1,13 @@
 {
-  "name": "Cypress-Automation-Framework-AutomationExercise-E2E-Testing",
+  "name": "cypress-automation-framework-automationexercise-e2e-testing",
   "version": "1.0.0",
-  "description": "Complete Cypress end-to-end UI test automation for AutomationExercise.com. Covers real-world flows like signup, login, cart, checkout, and more using reusable tests, fixtures, and custom commands. Ideal for QA Engineers and SDETs to learn, practice, or showcase Cypress skills.",
+  "description": "Complete Cypress end-to-end UI test automation for AutomationExercise.com. Covers real-world flows like signup, login, cart, checkout, and more using reusable tests, fixtures, and custom commands.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cypress run",
+    "report:merge": "mochawesome-merge cypress/reports/json/*.json > cypress/reports/json/merged.json",
+    "report:generate": "marge cypress/reports/json/merged.json -f cucumber-report -o cypress/reports/html",
+    "clean:artifacts": "rm -rf cypress/screenshots cypress/videos cypress/reports"
   },
   "repository": {
     "type": "git",
@@ -18,7 +21,32 @@
   },
   "homepage": "https://github.com/karthikputtoju/project-cypress-automationexercise#readme",
   "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^22.0.1",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.4",
     "@faker-js/faker": "^9.7.0",
-    "cypress": "^14.3.1"
+    "cypress": "^14.3.2",
+    "cypress-mochawesome-reporter": "^3.8.2",
+    "esbuild": "^0.25.3",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^5.0.0",
+    "mochawesome-report-generator": "^6.2.0"
+  },
+  "dependencies": {
+    "cypress-cucumber-preprocessor": "^4.1.0",
+    "cypress-localstorage-commands": "^3.8.0",
+    "cypress-real-events": "^1.7.0",
+    "cypress-xpath": "^2.0.1"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true,
+    "stepDefinitions": "cypress/e2e/step_definitions"
+  },
+  "cypress": {
+    "testFiles": "**/*.feature",
+    "baseUrl": "https://www.automationexercise.com",
+    "viewportWidth": 1280,
+    "viewportHeight": 720,
+    "video": true,
+    "screenshotOnRunFailure": true
   }
 }

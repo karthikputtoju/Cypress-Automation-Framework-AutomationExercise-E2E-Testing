@@ -1,22 +1,31 @@
-const { defineConfig } = require('cypress');
+import { defineConfig } from "cypress";
+import createBundler from "@bahmutov/cypress-esbuild-preprocessor";
+import { addCucumberPreprocessorPlugin } from "@badeball/cypress-cucumber-preprocessor";
+import { createEsbuildPlugin } from "@badeball/cypress-cucumber-preprocessor/esbuild";
+import mochawesomeReporterPlugin from "cypress-mochawesome-reporter/plugin.js";
 
-module.exports = defineConfig({
+export default defineConfig({
   e2e: {
-    baseUrl: 'https://automationexercise.com',
-    specPattern: 'cypress/e2e/*.spec.js'
-    env: {
-      login_email: 'john@example.com',
-      login_password: 'pass123',
-    },
-    video: true,
-    screenshotOnRunFailure: true,
-    reporter: 'mochawesome',
+    baseUrl: "https://automationexercise.com",
+    specPattern: "cypress/e2e/features/**/*.feature",
+    supportFile: "cypress/support/e2e.js",
+    screenshotsFolder: "cypress/screenshots",
+    videosFolder: "cypress/videos",
+    downloadsFolder: "cypress/downloads",
+    reporter: "cypress-mochawesome-reporter",
     reporterOptions: {
-      reportDir: 'cypress/reports',
+      reportDir: "cypress/reports/json",
       overwrite: false,
       html: true,
-      json: true,
+      json: true
     },
-  },
+    setupNodeEvents(on, config) {
+      on("file:preprocessor", createBundler({
+        plugins: [createEsbuildPlugin(config)],
+      }));
+      mochawesomeReporterPlugin(on);
+      require('cypress-mochawesome-reporter/plugin')(on);
+      return config;
+    }
+  }
 });
-
