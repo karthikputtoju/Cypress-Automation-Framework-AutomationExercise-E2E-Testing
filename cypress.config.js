@@ -7,7 +7,7 @@ import mochawesomeReporterPlugin from "cypress-mochawesome-reporter/plugin.js";
 export default defineConfig({
   e2e: {
     baseUrl: "https://automationexercise.com",
-    specPattern: "cypress/e2e/features/**/*.feature",
+    specPattern: "cypress/e2e/step_definitions/**/*.js",
     supportFile: "cypress/support/e2e.js",
     screenshotsFolder: "cypress/screenshots",
     videosFolder: "cypress/videos",
@@ -20,11 +20,17 @@ export default defineConfig({
       json: true
     },
     setupNodeEvents(on, config) {
-      on("file:preprocessor", createBundler({
-        plugins: [createEsbuildPlugin(config)],
-      }));
+      on(
+        "file:preprocessor",
+        createBundler({
+          plugins: [createEsbuildPlugin(config)],
+        })
+      );
+
       mochawesomeReporterPlugin(on);
-      require('cypress-mochawesome-reporter/plugin')(on);
+      addCucumberPreprocessorPlugin(on, config);
+      // Load the user data from the fixture file if it exists
+
       return config;
     }
   }
