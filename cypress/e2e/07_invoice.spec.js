@@ -12,7 +12,7 @@ describe('Invoice Download after Order Confirmation', () => {
     });
   });
 
-  it('should complete order and download invoice', () => {
+  it('Test scenario - should complete order and download invoice', () => {
     cy.visit('Base URL'); // Replace with the actual base URL
     cy.url().should('include', 'automationexercise.com'); // Verify the URL
     cy.contains('Products').click();

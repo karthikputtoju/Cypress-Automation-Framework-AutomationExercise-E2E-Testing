@@ -12,7 +12,7 @@ describe('Order Confirmation - Payment Processing', () => {
     });
   });
 
-  it('should enter payment details and confirm the order', () => {
+  it('Test scenario - should enter payment details and confirm the order', () => {
     cy.visit('Base URL'); // Replace with the actual base URL
     cy.url().should('include', 'automationexercise.com'); // Verify the URL
     cy.contains('Products').click();

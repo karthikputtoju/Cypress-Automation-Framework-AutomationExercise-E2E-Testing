@@ -12,7 +12,7 @@ describe('Delete User Account', () => {
     });
   });
   
-    it('Test scenarios - should delete the user account', () => {
+    it('Test scenario - should delete the user account', () => {
       cy.visit('Base URL'); // Replace with the actual base URL
       cy.url().should('include', 'automationexercise.com'); // Verify the URL
       cy.contains('Delete Account').click(); // Click on the 'Delete Account' link
