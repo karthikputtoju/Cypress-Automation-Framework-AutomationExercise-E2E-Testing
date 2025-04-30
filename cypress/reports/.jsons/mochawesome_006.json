@@ -1,0 +1,105 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-04-30T06:19:50.223Z",
+    "end": "2025-04-30T06:20:22.189Z",
+    "duration": 31966,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "d3889158-9bcd-48cd-b8d6-4eda6b303642",
+      "title": "",
+      "fullFile": "cypress\\e2e\\07_invoice.spec.js",
+      "file": "cypress\\e2e\\07_invoice.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "96d90d55-fa29-4689-b760-d2a8b88f18a7",
+          "title": "Invoice Download after Order Confirmation",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Test scenario - should complete order and download invoice",
+              "fullTitle": "Invoice Download after Order Confirmation Test scenario - should complete order and download invoice",
+              "timedOut": null,
+              "duration": 31940,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('Base URL'); // Replace with the actual base URL\ncy.url().should('include', 'automationexercise.com'); // Verify the URL\ncy.contains('Products').click();\ncy.get('.product-image-wrapper').eq(2).click(); // Click on the third saree (index 2)\ncy.get(':nth-child(1) > .panel-heading > .panel-title > a > .badge').click(); // Click on the 'Sarees' category\ncy.get(':nth-child(5) > .product-image-wrapper').click(); // Click on the first saree in the list\ncy.get('.panel-body > ul > :nth-child(3) > a').click(); // Click on the 'Sarees' category\ncy.contains('Women - Saree Products').should('be.visible'); // Verify the 'Sarees' category is displayed\ncy.get('.product-image-wrapper').eq(2).click(); // Click on the third saree (index 2)\ncy.contains('Beautiful Peacock Blue Cotton Linen Saree').should('be.visible');\ncy.get(':nth-child(5) > .product-image-wrapper > .choose > .nav > li > a').click();\ncy.get(':nth-child(5) > .btn').click(); // Click on the 'Add to Cart' button for the selected saree\ncy.get('.modal-content').should('be.visible'); // Verify the modal content is displayed\ncy.get('.modal-footer > .btn').click(); // Click on the 'Continue Shopping' button in the modal\ncy.contains('Cart').click(); // Click on the 'Cart' link in the navigation bar\ncy.contains('Beautiful Peacock Blue Cotton Linen Saree').should('be.visible');\ncy.get('.cart_description > h4').should('be.visible'); // Verify the cart description is visible\ncy.get('.cart_total_price').should('contain', '5000');\ncy.get('.col-sm-6 > .btn').click(); // Click on the 'Proceed to Checkout' button\ncy.url().should('include', '/checkout'); // Verify the URL includes '/checkout'\ncy.contains('Address Details').should('be.visible'); // Verify the 'Address Details' section is visible\ncy.contains('Review Your Order').should('be.visible'); // Verify the 'Review Your Order' section is visible\ncy.get('textarea[name=\"message\"]').type('Please deliver it quickly!'); // Enter a comment in the message box\ncy.contains('Place Order').click();\ncy.get('[data-qa=\"name-on-card\"]').type('Test User');\ncy.get('[data-qa=\"card-number\"]').type('4111111111111111');\ncy.get('[data-qa=\"cvc\"]').type('123');\ncy.get('[data-qa=\"expiry-month\"]').type('12');\ncy.get('[data-qa=\"expiry-year\"]').type('2026');\ncy.get('[data-qa=\"pay-button\"]').click();\ncy.contains('Order Placed!').should('be.visible');\ncy.contains('Download Invoice').should('be.visible'); // Verify the 'Invoice' section is visible\ncy.get('.col-sm-9 > .btn-default').click(); // Click on the 'Download Invoice' button\ncy.wait(2000); // Optional: wait for the download to complete\nconst downloadPath = 'cypress/downloads/invoice.txt';\ncy.readFile(downloadPath).should('exist'); // Verify the file exists\ncy.get('[data-qa=\"continue-button\"]').click(); // Click on the 'Continue' button to go back to the home page",
+              "err": {},
+              "uuid": "056fca71-5c25-4b37-b615-46768d00bc3d",
+              "parentUUID": "96d90d55-fa29-4689-b760-d2a8b88f18a7",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "056fca71-5c25-4b37-b615-46768d00bc3d"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 31940,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress\\reports\\.jsons",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

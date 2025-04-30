@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-04-30T06:19:16.761Z",
+    "end": "2025-04-30T06:19:47.885Z",
+    "duration": 31124,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "0b30f4d1-026d-40c4-bb4f-4f70a077b163",
+      "title": "",
+      "fullFile": "cypress\\e2e\\06_order.spec.js",
+      "file": "cypress\\e2e\\06_order.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "0078c5ba-424d-417b-9861-fa1e9fe454ab",
+          "title": "Order Confirmation - Payment Processing",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Test scenario - should enter payment details and confirm the order",
+              "fullTitle": "Order Confirmation - Payment Processing Test scenario - should enter payment details and confirm the order",
+              "timedOut": null,
+              "duration": 31072,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('Base URL'); // Replace with the actual base URL\ncy.url().should('include', 'automationexercise.com'); // Verify the URL\ncy.contains('Products').click();\ncy.get('.product-image-wrapper').eq(2).click(); // Click on the third saree (index 2)\ncy.get(':nth-child(1) > .panel-heading > .panel-title > a > .badge').click(); // Click on the 'Sarees' category\ncy.get(':nth-child(5) > .product-image-wrapper').click(); // Click on the first saree in the list\ncy.get('.panel-body > ul > :nth-child(3) > a').click(); // Click on the 'Sarees' category\ncy.contains('Women - Saree Products').should('be.visible'); // Verify the 'Sarees' category is displayed\ncy.get('.product-image-wrapper').eq(2).click(); // Click on the third saree (index 2)\ncy.contains('Beautiful Peacock Blue Cotton Linen Saree').should('be.visible');\ncy.get(':nth-child(5) > .product-image-wrapper > .choose > .nav > li > a').click();\ncy.get(':nth-child(5) > .btn').click(); // Click on the 'Add to Cart' button for the selected saree\ncy.get('.modal-content').should('be.visible'); // Verify the modal content is displayed\ncy.get('.modal-footer > .btn').click(); // Click on the 'Continue Shopping' button in the modal\ncy.contains('Cart').click(); // Click on the 'Cart' link in the navigation bar\ncy.contains('Beautiful Peacock Blue Cotton Linen Saree').should('be.visible');\ncy.get('.cart_description > h4').should('be.visible'); // Verify the cart description is visible\ncy.get('.cart_total_price').should('contain', '5000');\ncy.get('.col-sm-6 > .btn').click(); // Click on the 'Proceed to Checkout' button\ncy.url().should('include', '/checkout'); // Verify the URL includes '/checkout'\ncy.contains('Address Details').should('be.visible'); // Verify the 'Address Details' section is visible\ncy.contains('Review Your Order').should('be.visible'); // Verify the 'Review Your Order' section is visible\ncy.get('textarea[name=\"message\"]').type('Please deliver it quickly!'); // Enter a comment in the message box\ncy.contains('Place Order').click();\ncy.get('[data-qa=\"name-on-card\"]').type('Test User');\ncy.get('[data-qa=\"card-number\"]').type('4111111111111111');\ncy.get('[data-qa=\"cvc\"]').type('123');\ncy.get('[data-qa=\"expiry-month\"]').type('12');\ncy.get('[data-qa=\"expiry-year\"]').type('2026');\ncy.get('[data-qa=\"pay-button\"]').click();\ncy.contains('Order Placed!').should('be.visible');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: expected '<p.cart_total_price>' to contain '5000'",
+                "estack": "AssertionError: Timed out retrying after 4000ms: expected '<p.cart_total_price>' to contain '5000'\n    at Context.eval (webpack://your-project-name/./cypress/e2e/06_order.spec.js:34:32)",
+                "diff": null
+              },
+              "uuid": "f78f031b-7cbb-4b7d-bd3b-397e80d6bd1c",
+              "parentUUID": "0078c5ba-424d-417b-9861-fa1e9fe454ab",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "f78f031b-7cbb-4b7d-bd3b-397e80d6bd1c"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 31072,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress\\reports\\.jsons",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
