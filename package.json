@@ -7,7 +7,9 @@
     "test": "cypress run",
     "report:merge": "mochawesome-merge cypress/reports/json/*.json > cypress/reports/json/merged.json",
     "report:generate": "marge cypress/reports/json/merged.json -f cucumber-report -o cypress/reports/html",
-    "clean:artifacts": "rm -rf cypress/screenshots cypress/videos cypress/reports"
+    "clean:artifacts": "rm -rf cypress/screenshots cypress/videos cypress/reports",
+    "report": "mochawesome-merge cypress/reports/mochawesome/*.json > cypress/reports/mochawesome/merged-report.json",
+    "generate-report": "mochawesome-report-generator cypress/reports/mochawesome/merged-report.json"
   },
   "repository": {
     "type": "git",
@@ -25,6 +27,7 @@
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.4",
     "@faker-js/faker": "^9.7.0",
     "cypress": "^14.3.2",
+    "cypress-localstorage-commands": "^2.2.7",
     "cypress-mochawesome-reporter": "^3.8.2",
     "esbuild": "^0.25.3",
     "mochawesome": "^7.1.3",
@@ -33,7 +36,6 @@
   },
   "dependencies": {
     "cypress-cucumber-preprocessor": "^4.1.0",
-    "cypress-localstorage-commands": "^3.8.0",
     "cypress-real-events": "^1.7.0",
     "cypress-xpath": "^2.0.1"
   },
@@ -47,6 +49,6 @@
     "viewportWidth": 1280,
     "viewportHeight": 720,
     "video": true,
-    "screenshotOnRunFailure": true
+    "generate-report": "mochawesome-report-generator cypress/reports/mochawesome/merged-report.json"
   }
 }
